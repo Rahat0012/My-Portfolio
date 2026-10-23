@@ -1,0 +1,18 @@
+p{
+    width:80%;
+    border:1px solid black;
+    background-color:blue;
+    color:white;
+}
+/* media quary */
+/* @media screen and (min-width:700px){
+    p{
+        width:50%;
+    }
+} */
+
+@media(max-width:500px){
+    P{
+        background-color: blueviolet;
+    }
+}

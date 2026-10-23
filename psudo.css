@@ -1,0 +1,33 @@
+a:link{
+    color: rgba(170, 77, 24, 0.34);
+}
+a:visited{
+    color: rgb(15, 165, 45);
+}
+a:hover{
+    color: rgb(91, 90, 99);
+    text-decoration: underline;
+}
+a:active{
+    color: yellow;
+}
+/* double element for pseudo element  */
+.first::first-letter{
+    color: rgb(255, 0, 0);
+    font-size: 200%;
+}
+.second::first-line{
+    color: rgb(0, 255, 0);
+    font-size: 200%;
+}
+
+p::before{
+    content:"hey";
+    font-size: 2em;
+    color:blue;
+}
+P::after{
+    content:"& Ruwaa is my bangu";
+    font-size: 2em;
+    color:blue;
+}

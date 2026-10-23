@@ -1,0 +1,15 @@
+div{
+    width:300px;
+    height:300px;
+    margin:30px;
+    border:2px solid black;
+    background-image:repeating-linear-gradient(to right, blue 0px, red 5px);
+}
+
+/* div{
+    width:300px;
+    height:300px;
+    margin:30px;
+    border:2px solid black;
+    background-image:radial-gradient(circle top right, blue, red);
+} */
