@@ -1,0 +1,212 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    font-family: italic, sans-serif,arial;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+}
+.navbar{
+    background-color: #685c6c;
+
+    padding: 15px 50px;
+    border-bottom: 1px solid #444;
+    position:fixed;
+    width:100%;
+    top:0;
+    display:flex;
+}
+.logo{
+    display:inline-block;
+    color:black;
+    font-weight:bold;
+
+
+}
+
+
+.logo a{
+    font-size: 24px;
+    font-family: 'Arial Black', sans-serif;
+    font-weight: bold;
+    color: #021534;
+    text-decoration: none;
+}
+
+.nav-links{
+    display:inline-block;
+    margin-left: 50px;
+}
+.nav-links li{
+    display:inline-block;
+    margin:0px 20px;
+    list-style: none;
+}
+.nav-links a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+.nav-links a:hover,
+.nav-links a.active{
+    color: #007bff;
+}
+
+.Hero-btn{
+    display:inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.Hero-btn:hover{
+    background-color: #013872;
+}
+.hero{
+    text-align: center;
+    padding: 100px 20px;
+    background-color: #f5f5f5;
+}
+.hero-content{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.hero h1{
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #333;
+}
+.hero p{
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #666;
+}
+.hero-btn{
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    display: inline-block;
+}
+.hero-btn:hover{
+    background-color:#007bff;
+}
+.hero-image{
+    margin-top: 30px;
+}
+.hero-image img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.projects{
+    padding: 20px 20px;
+    background-color: #01000018;
+
+}
+.project-card{
+    background-color:white;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+}
+.project-card img{
+    width: 100px;
+    height: 50px;
+   
+    margin-right: 20px;
+    background-color:linear-gradient(135deg, #190ca2, #0d0a1a);
+    border: 2px solid black;
+}
+a.project-link{
+    color: rgba(170, 77, 24, 0.34);
+}
+a.project-link:visited{
+    color: rgb(15, 165, 45);
+}
+a.project-link:hover{
+    color: rgb(91, 90, 99);
+    text-decoration: underline;
+}
+a.project-link:active{
+    color: yellow;
+}
+.contact h2{
+    text-align: center;
+    color: #0c9547;
+    margin-bottom: 20px;
+}
+.contact form{
+    max-width: 600px;
+    margin:  auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #9f9a9a;
+    display: flex;
+
+}
+.contact form input,
+.contact form textarea{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.contact form button{
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display:flex;
+}
+.contact form button:hover{
+    background-color: #14304e;
+}
+.resume{
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.resume button{
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.View-Resume{
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.View-Resume:hover{
+    background-color: #4f0ede;
+    color:black;
+    font-weight: bold;
+}
