@@ -170,27 +170,90 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
     const submitBtn = document.getElementById('submit-btn');
+    const subjectHidden = document.getElementById('form-subject-hidden');
 
     if (form) {
-        form.addEventListener('submit', (e) => {
+        const showStatus = (type, html) => {
+            formStatus.className = `form-status ${type}`;
+            formStatus.innerHTML = html;
+            formStatus.style.display = 'block';
+        };
+
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Simulate sending (replace with real backend/EmailJS if needed)
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !subject || !message) {
+                showStatus('error', '<i class="fa-solid fa-circle-exclamation"></i> Please fill in all fields.');
+                return;
+            }
+
+            const originalBtnHTML = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
 
-            setTimeout(() => {
-                formStatus.className = 'form-status success';
-                formStatus.textContent = '✅ Message sent! I\'ll get back to you soon.';
-                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
-                submitBtn.disabled = false;
-                form.reset();
+            if (subjectHidden) {
+                subjectHidden.value = `[Portfolio] ${subject} - from ${name}`;
+            }
 
+            const mailtoFallback = () => {
+                const mailtoUrl = `mailto:aminrahat700@gmail.com?subject=${encodeURIComponent('[Portfolio] ' + subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+                window.location.href = mailtoUrl;
+            };
+
+            // If browsing directly as a file:// (FormSubmit requires a web server)
+            if (window.location.protocol === 'file:') {
                 setTimeout(() => {
-                    formStatus.className = 'form-status';
-                    formStatus.textContent = '';
-                }, 5000);
-            }, 1800);
+                    mailtoFallback();
+                    showStatus('success', '📧 Opening your email app to send the message to <strong>aminrahat700@gmail.com</strong>.<br><small style="color:var(--text-muted);">(Note: On a live server or GitHub Pages, messages will send directly in the background!)</small>');
+                    submitBtn.innerHTML = originalBtnHTML;
+                    submitBtn.disabled = false;
+                    form.reset();
+                }, 600);
+                return;
+            }
+
+            try {
+                const response = await fetch('https://formsubmit.co/ajax/aminrahat700@gmail.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        _subject: `[Portfolio] ${subject} - from ${name}`,
+                        message: message,
+                        _captcha: 'false',
+                        _template: 'table'
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && (data.success === 'true' || data.success === true)) {
+                    showStatus('success', '<i class="fa-solid fa-circle-check"></i> Message sent successfully! I will get back to you soon.');
+                    form.reset();
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                        formStatus.className = 'form-status';
+                    }, 6000);
+                } else {
+                    throw new Error(data.message || 'Form submission failed');
+                }
+            } catch (err) {
+                console.warn('Direct send failed, opening email client fallback:', err);
+                mailtoFallback();
+                showStatus('info', '<i class="fa-solid fa-envelope-open-text"></i> Opening your email client to send the message directly to <strong>aminrahat700@gmail.com</strong>.');
+            } finally {
+                submitBtn.innerHTML = originalBtnHTML;
+                submitBtn.disabled = false;
+            }
         });
     }
 
