@@ -1,6 +1,6 @@
  My Portfolio
 
-A personal portfolio website to showcase my projects, technical skills, and background. Designed and built from scratch using HTML, CSS.
+A personal portfolio website to showcase my projects, technical skills, and background. Designed and built from scratch using HTML, CSS & js.
 
  Features
 - Responsive design across devices
@@ -11,5 +11,6 @@ A personal portfolio website to showcase my projects, technical skills, and back
  Tech Stack
 - HTML5
 - CSS3
+- js
   
 
