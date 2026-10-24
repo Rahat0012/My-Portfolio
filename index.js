@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const phrases = [
         'CSE Student',
         'Flutter Developer',
-        'Java Programmer',
+        'Blockchain Developer',
         'Problem Solver',
         'Web Developer'
     ];
